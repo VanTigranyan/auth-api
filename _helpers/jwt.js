@@ -7,7 +7,8 @@ function jwt() {
   const { secret } = config;
   return expressJwt( {secret} ).unless({
     path: [
-      '/users/authenticate'
+      '/users/authenticate',
+      '/users/register',
     ]
   })
 }

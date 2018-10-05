@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('./user.service');
+const jwt = require('jsonwebtoken');
 
 router.post('/authenticate', authenticate);
+router.post('/register', register);
 router.get('/', getAll);
 
 module.exports = router;

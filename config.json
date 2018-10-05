@@ -1,3 +1,5 @@
 {
-  "secret": "SecretForPasswordJWT"
+  "secret": "SecretForPasswordJWT",
+  "mlabUser": "VanTiger",
+  "mlabPass": "vanblog21"
 }
