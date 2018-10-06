@@ -26,7 +26,6 @@ function register(req, res, next) {
 }
 
 function getCurrent(req, res, next) {
-  console.log(req.user);
   userService.getById(req.user.sub)
     .then(user => user ? res.json(user) : res.sendStatus(404))
     .catch(err => next(err));
