@@ -39,7 +39,7 @@ function getById(req, res, next) {
 
 function update(req, res, next) {
   userService.update(req.params.id, req.body)
-    .then(() => res.json({}))
+    .then(res => res.json(res))
     .catch(err => next(err));
 }
 

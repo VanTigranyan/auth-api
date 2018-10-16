@@ -1,8 +1,14 @@
 module.exports = errorHandler;
 
 function errorHandler(err, req, res, next) {
-  if (typeof (err === "string")) {
+  if (typeof (err) === "string") {
     return res.status(400).json({ message: err });
+  }
+
+  if(err.message === 'Format is Authorization: Bearer [token]') {
+    return res.status(401).json({
+      message: "Invalid Token"
+    });
   }
 
   if (err.name === "ValidationError") {
