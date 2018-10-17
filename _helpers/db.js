@@ -11,5 +11,6 @@ db.once('open', function() {
 });
 
 module.exports = {
-    User: require('../users/user.model')
+    User: require('../users/user.model'),
+    Post: require('../posts/post.model')
 };

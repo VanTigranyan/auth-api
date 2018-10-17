@@ -4,13 +4,14 @@ const bcrypt = require("bcryptjs");
 const db = require("_helpers/db");
 const User = db.User;
 
+
 module.exports = {
   authenticate,
   getAll,
   getById,
   create,
   update,
-  delete: _delete
+  delete: _delete,
 };
 
 async function authenticate({ username, password }) {
@@ -58,7 +59,7 @@ async function create(userParam) {
 /* Update user params */
 
 async function update(id, userParam) {
-  const user = User.findById(id);
+  const user = await User.findById(id);
   
   // if there is no such a user
   if (!user) throw "User not found";
@@ -74,10 +75,6 @@ async function update(id, userParam) {
   // if user wants to change password
   if (userParam.password) {
     userParam.hash = bcrypt.hashSync(userParam.password, 10);
-  }
-
-  if(error) {
-    console.log(error);
   }
 
   // copy and rewrite userParam props to user

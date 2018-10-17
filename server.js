@@ -16,10 +16,11 @@ app.use(morgan('combined'));
 app.use(jwt());
 
 app.use('/users', require('./users/user.controller'));
+app.use('/posts', require('./posts/post.controller'));
 
 app.use(errorHandler);
 
-const port = process.env.NODE_ENV === 'production' ? 80 : 4000;
+const port = process.env.NODE_ENV === 'production' ? 80 : 3000;
 const server = app.listen(port, function() {
   console.log('Server is listening on port ' + port)
 })

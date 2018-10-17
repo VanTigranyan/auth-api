@@ -13,6 +13,7 @@ router.delete('/:id', _delete);
 
 module.exports = router;
 
+
 function authenticate(req, res, next) {
   userService.authenticate(req.body)
     .then(user => user ? res.json(user) : res.status(400).json({message: 'Username or password is incorrect'}))
@@ -39,13 +40,13 @@ function getById(req, res, next) {
 
 function update(req, res, next) {
   userService.update(req.params.id, req.body)
-    .then(res => res.json(res))
+    .then(() => res.json({message: 'successful'}))
     .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
-  userService.delete(req.parms.id)
-    .then(() => res.json({}))
+  userService.delete(req.params.id)
+    .then(() => res.json({message: 'User has been deleted successfuly!'}))
     .catch(err => next(err));
 }
 
