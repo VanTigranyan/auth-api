@@ -18,7 +18,7 @@ function createPost(req, res, next) {
     .then(user => {
       if (user) {
           postService.createPost({
-            heading: req.body.heading,
+            title: req.body.title,
             text: req.body.text,
             author: user._id
           })
@@ -55,6 +55,7 @@ function getPostsByAuthor(req, res, next) {
 function updatePost(req, res, next) {
     postService.getPostById(req.body.postId)
     .then(post => {
+        console.log(req.user.sub, post.author == req.user.sub)
         if(post.author == req.user.sub) {
             const postId = req.body.postId;
             const postParams = req.body.postParams;
